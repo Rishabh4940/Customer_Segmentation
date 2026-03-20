@@ -91,7 +91,7 @@ Customers were segmented into:
 
 ## 📊 Power BI Dashboard  
 
-![Customer Segmentation Dashboard](dashboard.png)
+![Customer Segmentation Dashboard](dashboard.jpg)
 
 ### Dashboard Highlights:
 - Customer distribution by segment  
