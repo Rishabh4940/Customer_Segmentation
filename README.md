@@ -1,97 +1,129 @@
-# 📊 Customer Segmentation using Advanced RFM Analysis
+# 📊 Customer Segmentation using RFM Analysis
 
-## 🚀 Project Overview
-This project focuses on segmenting customers based on their purchasing behavior using Advanced RFM (Recency, Frequency, Monetary) Analysis. 
+End-to-end customer segmentation project using Python and Power BI
 
-The goal is to help businesses identify high-value customers, detect churn risks, and design targeted marketing strategies.
+---
 
-The analysis is performed using Python (Pandas), and insights are visualized through an interactive Power BI dashboard.
+## 🚀 Project Overview  
+This project focuses on segmenting customers based on their purchasing behavior using **RFM (Recency, Frequency, Monetary) analysis**.
 
-## 🎯 Business Problem
-Businesses often struggle to understand customer behavior and allocate marketing resources effectively.
+The goal is to help businesses identify high-value customers, understand customer behavior, and improve marketing and retention strategies.
 
-Without proper segmentation:
-- High-value customers may be ignored
-- At-risk customers may churn unnoticed
-- Marketing campaigns become inefficient
+The analysis is performed using **Python (Pandas)**, with visualizations for EDA, and final insights are presented through a **Power BI dashboard**.
 
-This project solves this by segmenting customers into actionable groups.
+---
 
-## 📂 Dataset
-- Source: Kaggle
-- Type: E-commerce transactional data
+## 🎯 Business Problem  
+Businesses often lack clarity on:
+- Who their most valuable customers are  
+- Which customers are at risk of churn  
+- How revenue is distributed across different customer groups  
 
-### Features:
-- InvoiceNo: Transaction ID
-- CustomerID: Unique customer identifier
-- InvoiceDate: Date of purchase
-- Quantity: Number of items purchased
-- UnitPrice: Price per item
+This project solves this by segmenting customers into actionable categories.
 
-  ## 🧹 Data Cleaning & Preprocessing
-- Removed missing Customer IDs
-- Removed duplicate records
-- Filtered cancelled transactions
-- Handled negative quantities (returns)
-- Converted InvoiceDate to datetime format
-- Created TotalPrice column (Quantity × UnitPrice)
+---
 
-- ## 📊 Exploratory Data Analysis
-Performed exploratory analysis to understand:
-- Revenue trends over time
-- Customer purchase patterns
-- Distribution of transactions
+## 📂 Dataset  
+- Source: Kaggle  
+- Type: E-commerce transactional data  
 
-These insights helped in building meaningful customer segments.
+### Key Features:
+- CustomerID  
+- InvoiceDate  
+- Quantity  
+- UnitPrice  
 
-## 🧠 RFM Feature Engineering
-Created RFM metrics for each customer:
+---
 
-- Recency: Days since last purchase
-- Frequency: Number of transactions
-- Monetary: Total spending
+## 🧹 Data Cleaning & Preprocessing  
+- Removed missing and invalid customer records  
+- Filtered cancelled transactions  
+- Converted date columns to datetime format  
+- Created **TotalPrice = Quantity × UnitPrice**  
 
-Customers were grouped using CustomerID to compute these values.
+---
 
-## 🔢 RFM Scoring
-Assigned scores to each RFM metric using quantiles:
-- Higher Frequency & Monetary → Higher score
-- Lower Recency → Higher score
+## 📊 Exploratory Data Analysis (EDA)  
+Performed analysis using **Pandas, Matplotlib, and Seaborn** to understand:
+- Revenue trends  
+- Customer purchasing behavior  
+- Customer distribution across segments  
+- Revenue contribution by each segment  
 
-These scores were combined to evaluate overall customer value.
 
-## 🧩 Customer Segmentation
-Customers were segmented into meaningful groups using advanced logic:
+---
 
-- Champions – High value, frequent buyers
-- Loyal Customers – Regular customers
-- At Risk – Previously active but now inactive
-- Lost Customers – No recent activity
+## 🧠 RFM Feature Engineering  
+Calculated RFM metrics for each customer:
 
-This segmentation enables targeted marketing strategies.
+- **Recency** → Days since last purchase  
+- **Frequency** → Number of transactions  
+- **Monetary** → Total spending  
 
-## 📈 Key Insights
+---
 
-- Champions contribute the highest revenue and should be rewarded
-- At-risk customers show declining activity and need retention campaigns
-- Lost customers can be targeted with re-engagement offers
-- Loyal customers provide stable revenue and should be nurtured
+## 🔢 RFM Scoring  
+- Assigned scores based on customer behavior  
+- Higher frequency & spending → higher score  
+- Lower recency → higher score  
 
-  ## 📊 Power BI Dashboard
+---
 
-An interactive dashboard was created to visualize:
-- Customer segment distribution
-- Revenue by segment
-- Key KPIs (Total Revenue, Customers, Avg Spend)
+## 🧩 Customer Segmentation  
+Customers were segmented into:
 
-## 🛠️ Tech Stack
-- Python (Pandas, NumPy)
-- Power BI
-- Kaggle Dataset
+- **Champions** – High value, frequent buyers  
+- **Loyal Customers** – Consistent purchasers  
+- **At Risk** – Declining activity  
+- **Lost Customers** – No recent activity  
+- **New Customers** – Recently acquired  
+- **Others** – Moderate behavior  
 
-## 🚀 Project Workflow
-1. Data Collection
-2. Data Cleaning
-3. Feature Engineering (RFM)
-4. Customer Segmentation
-5. Visualization (Power BI Dashboard)    
+---
+
+## 📈 Key Insights  
+- Champions generate the highest revenue despite fewer customers  
+- A large portion of customers fall under the “Lost” segment → retention issue  
+- Loyal customers provide stable and consistent revenue  
+- At-risk customers require targeted re-engagement strategies  
+
+---
+
+## 📊 Power BI Dashboard  
+
+![Customer Segmentation Dashboard](dashboard.png)
+
+### Dashboard Highlights:
+- Customer distribution by segment  
+- Revenue contribution by each segment  
+- Key KPIs (Total Customers, Revenue, Avg Revenue per Customer)  
+- Segment-wise performance comparison  
+
+---
+
+## 🛠️ Tech Stack  
+- Python (Pandas)  
+- Jupyter Notebook  
+- Power BI  
+
+---
+
+## 🚀 Project Workflow  
+1. Data Collection  
+2. Data Cleaning  
+3. Exploratory Data Analysis  
+4. RFM Feature Engineering  
+5. Customer Segmentation  
+6. Visualization (EDA + Power BI Dashboard)  
+
+---
+
+## 📌 Conclusion  
+This project demonstrates how raw transactional data can be transformed into meaningful customer segments and business insights.
+
+It helps businesses:
+- Identify high-value customers  
+- Improve retention strategies  
+- Make data-driven marketing decisions  
+
+ 
