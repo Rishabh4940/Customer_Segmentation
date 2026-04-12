@@ -1,4 +1,4 @@
-# 📊 Customer Segmentation using RFM Analysis
+# 📊 Customer Segmentation Using RFM Analysis
 
 End-to-end customer segmentation project using Python and Power BI
 
