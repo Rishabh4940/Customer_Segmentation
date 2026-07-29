@@ -1,129 +1,80 @@
 # 📊 Customer Segmentation Using RFM Analysis
 
-End-to-end customer segmentation project using Python and Power BI
+End-to-end segmentation of **4,372 customers** using **Python, SQL, and Power BI** — 
+built in pandas, then reproduced and validated in SQL.
 
 ---
 
-## 🚀 Project Overview  
-This project focuses on segmenting customers based on their purchasing behavior using **RFM (Recency, Frequency, Monetary) analysis**.
-
-The goal is to help businesses identify high-value customers, understand customer behavior, and improve marketing and retention strategies.
-
-The analysis is performed using **Python (Pandas)**, with visualizations for EDA, and final insights are presented through a **Power BI dashboard**.
-
----
-
-## 🎯 Business Problem  
-Businesses often lack clarity on:
-- Who their most valuable customers are  
-- Which customers are at risk of churn  
-- How revenue is distributed across different customer groups  
-
-This project solves this by segmenting customers into actionable categories.
+## 🎯 Business Problem
+Most businesses can't clearly see who their most valuable customers are, who is 
+drifting away, and how revenue concentrates across customer groups. This project 
+segments customers into 6 actionable groups using **RFM (Recency, Frequency, Monetary)** 
+analysis, turning raw transaction data into targeted retention strategy.
 
 ---
 
-## 📂 Dataset  
-- Source: Kaggle  
-- Type: E-commerce transactional data  
-
-### Key Features:
-- CustomerID  
-- InvoiceDate  
-- Quantity  
-- UnitPrice  
+## 📈 Key Findings
+- **Champions are 22% of customers but drive 66.6% of revenue** — revenue is heavily 
+  concentrated, making retention of this segment the single biggest lever.
+- **Lost + Others make up ~49% of the base but only ~13% of revenue** — a large low-value tail.
+- **Loyal Customers (15% of base) contribute a steady 15% of revenue** — the predictable core.
+- **At-Risk customers still hold recoverable revenue** — the most time-sensitive intervention.
 
 ---
 
-## 🧹 Data Cleaning & Preprocessing  
-- Removed missing and invalid customer records  
-- Filtered cancelled transactions  
-- Converted date columns to datetime format  
-- Created **TotalPrice = Quantity × UnitPrice**  
+## 🧩 Customer Segments
+
+| Segment | Customers | % of Base | % of Revenue |
+|---|---|---|---|
+| Champions | 946 | 21.6% | 66.6% |
+| Loyal Customers | 679 | 15.5% | 15.0% |
+| Others | 1,070 | 24.5% | 8.5% |
+| Lost Customers | 1,070 | 24.5% | 4.8% |
+| New Customers | 362 | 8.3% | 2.3% |
+| At Risk | 245 | 5.6% | 2.9% |
 
 ---
 
-## 📊 Exploratory Data Analysis (EDA)  
-Performed analysis using **Pandas, Matplotlib, and Seaborn** to understand:
-- Revenue trends  
-- Customer purchasing behavior  
-- Customer distribution across segments  
-- Revenue contribution by each segment  
-
+## 🔢 Approach
+1. **Cleaning** — removed transactions with missing CustomerID; computed `TotalPrice = Quantity × UnitPrice`
+2. **RFM metrics** — Recency (days since last purchase), Frequency (transaction count), Monetary (total spend) per customer
+3. **Scoring** — each metric scored 1–5 using quantile binning (pandas `qcut` / SQL `NTILE`)
+4. **Segmentation** — rule-based mapping of R/F/M scores into 6 business segments
 
 ---
 
-## 🧠 RFM Feature Engineering  
-Calculated RFM metrics for each customer:
+## 🔁 SQL Validation
+The full RFM pipeline was rebuilt in SQL — CTEs for the R/F/M calculation, `NTILE(5)` 
+for scoring, and a `CASE` statement for segment assignment — then validated against the 
+pandas implementation. **Segment counts matched within ~1%**, with small differences at 
+score boundaries due to how `qcut` and `NTILE` break ties.
 
-- **Recency** → Days since last purchase  
-- **Frequency** → Number of transactions  
-- **Monetary** → Total spending  
-
----
-
-## 🔢 RFM Scoring  
-- Assigned scores based on customer behavior  
-- Higher frequency & spending → higher score  
-- Lower recency → higher score  
+See [`rfm_segmentation.sql`](rfm_segmentation.sql).
 
 ---
 
-## 🧩 Customer Segmentation  
-Customers were segmented into:
+## 📊 Power BI Dashboard
+Interactive dashboard showing customer distribution by segment, revenue contribution 
+per segment, and key KPIs (Total Customers, Total Revenue, Avg Revenue per Customer).
 
-- **Champions** – High value, frequent buyers  
-- **Loyal Customers** – Consistent purchasers  
-- **At Risk** – Declining activity  
-- **Lost Customers** – No recent activity  
-- **New Customers** – Recently acquired  
-- **Others** – Moderate behavior  
+![Dashboard](dashboard.jpg)
 
 ---
 
-## 📈 Key Insights  
-- Champions generate the highest revenue despite fewer customers  
-- A large portion of customers fall under the “Lost” segment → retention issue  
-- Loyal customers provide stable and consistent revenue  
-- At-risk customers require targeted re-engagement strategies  
+## 🛠️ Tech Stack
+**Python** (Pandas, NumPy, Matplotlib, Seaborn) · **SQL** (CTEs, Window Functions) · 
+**Power BI** · **Jupyter Notebook**
 
 ---
 
-## 📊 Power BI Dashboard  
-
-![Customer Segmentation Dashboard](dashboard.jpg)
-
-### Dashboard Highlights:
-- Customer distribution by segment  
-- Revenue contribution by each segment  
-- Key KPIs (Total Customers, Revenue, Avg Revenue per Customer)  
-- Segment-wise performance comparison  
+## 📂 Repository Files
+- `customerSegmentation.ipynb` — full pandas analysis (cleaning → RFM → segmentation → EDA)
+- `rfm_segmentation.sql` — SQL reproduction and validation of the pipeline
+- `customerSegmentation.pbix` — Power BI dashboard
+- `dashboard.jpg` — dashboard preview
 
 ---
 
-## 🛠️ Tech Stack  
-- Python (Pandas)  
-- Jupyter Notebook  
-- Power BI  
-
----
-
-## 🚀 Project Workflow  
-1. Data Collection  
-2. Data Cleaning  
-3. Exploratory Data Analysis  
-4. RFM Feature Engineering  
-5. Customer Segmentation  
-6. Visualization (EDA + Power BI Dashboard)  
-
----
-
-## 📌 Conclusion  
-This project demonstrates how raw transactional data can be transformed into meaningful customer segments and business insights.
-
-It helps businesses:
-- Identify high-value customers  
-- Improve retention strategies  
-- Make data-driven marketing decisions  
-
- 
+## 📌 Data
+UCI **Online Retail** dataset — UK e-commerce transactions (Dec 2010 – Dec 2011), 
+available on Kaggle.
