@@ -57,7 +57,7 @@ See [`rfm_segmentation.sql`](rfm_segmentation.sql).
 Interactive dashboard showing customer distribution by segment, revenue contribution 
 per segment, and key KPIs (Total Customers, Total Revenue, Avg Revenue per Customer).
 
-![Dashboard](dashboard.jpg)
+![Dashboard](dashboard_main.jpg)
 
 ---
 
