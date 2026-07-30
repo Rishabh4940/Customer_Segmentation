@@ -82,7 +82,7 @@ due to how `qcut` and `NTILE` break ties. See [`rfm_segmentation.sql`](rfm_segme
 Interactive dashboard showing segment distribution, revenue contribution, and key KPIs 
 (Total Customers, Total Revenue, Avg Revenue per Customer).
 
-![Dashboard](dashboard.jpg)
+![Dashboard](dashboard_main.jpg)
 
 ---
 
